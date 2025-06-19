@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        // Поля ввода
+
         TextField nameField = new TextField();
         nameField.setPromptText("Название");
 
@@ -33,7 +33,7 @@ public class Main extends Application {
 
         Button addButton = new Button("Добавить");
         Button searchButton = new Button("Найти");
-        
+
         TableColumn<Dish, Integer> idCol = new TableColumn<>("ID");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -48,7 +48,7 @@ public class Main extends Application {
 
         table.getColumns().addAll(idCol, nameCol, compCol, priceCol);
 
-        // Добавление
+
         addButton.setOnAction(e -> {
             try {
                 String name = nameField.getText();
@@ -65,15 +65,13 @@ public class Main extends Application {
                 showAlert("Ошибка", "Введите правильную цену");
             }
         });
-
-        // Поиск
+        
         searchButton.setOnAction(e -> {
             String query = searchField.getText();
             List<Dish> result = manager.searchByName(query);
             updateTable(result);
         });
 
-        // Раскладка
         HBox inputBox = new HBox(10, nameField, compField, priceField, addButton);
         HBox searchBox = new HBox(10, searchField, searchButton);
         VBox root = new VBox(10, inputBox, searchBox, table);
