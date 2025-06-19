@@ -31,11 +31,9 @@ public class Main extends Application {
         TextField searchField = new TextField();
         searchField.setPromptText("Поиск по названию");
 
-        // Кнопки
         Button addButton = new Button("Добавить");
         Button searchButton = new Button("Найти");
-
-        // Таблица
+        
         TableColumn<Dish, Integer> idCol = new TableColumn<>("ID");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
